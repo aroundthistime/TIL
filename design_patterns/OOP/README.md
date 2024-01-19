@@ -23,7 +23,7 @@
     - DB connection
     - Cache management
 
-##### Flyweight vs Singletone
+#### Flyweight vs Singletone
 - They both have limitations on number of instances that can be created.
 - Flyweight allows multiple instances as long as they have different properties.
 - Singletone always guarantees that there is one instance.
