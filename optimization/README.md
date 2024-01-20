@@ -52,7 +52,7 @@
 - Lazy loading image could help if there are many image items in the page which do not need to be exposed to the user immediately.
     - Implement custom logic based on intersection observer
     - Utilize next/image (provide lazy loading by default)
-    - img element supports 'loading' attribute with the same way as next/image (yet not supported in Safari - as of 2024-01-20)
+    - img element supports 'loading' attribute with the same way as next/image
 - Preloading the image could be useful if the loading process of the image asset could affect the layout in a bad way
     - Fetch image in advance (eg. new Image().src = '~')
     - Set loading attribute of next/image 'eager' (default is 'lazy' should for lazy loading)
