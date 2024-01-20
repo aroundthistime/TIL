@@ -19,6 +19,14 @@
 - Enable text compression (set Content-Encoding in response header from the server)
     - gzip: Use deflate internally + extra (higher compression)
     - deflate
+- Remove unused code from the bundle
+    - Check Coverage tab inside devtools to see the percentage of code actually being used.
+        - Coverage tab shows the percentage of code used at least once till the moment. The percentage would start low and increase as user starts interacting with the page.
+        - Coverage tab could be hidden by default (click more tools button)
+    - PurgeCSS
+        - Remove unused css codes (considered as "unused" if the css code doesn't include any keyword)
+        - The keyword could be extracted from element tags, content, classnames, etc.
+        - The rule for extracting the keywords could be customized.
 
 ### 4. Preconnect to required origins
 - Pre-setup tasks for connecting to important 3rd party origin which could take a lot of time (DNS search, TCP hand-shaking, ..)
@@ -63,10 +71,7 @@
         <img src="~.jpg" /> // Universal format as an insurance
         </picture>
 
-### 7. Devtools Coverage - Find unused code
-- Coverage tab provides the coverage of the code actually used for rendering per each bundle. If the percentage is extremely low, you could look up for the file to find and discard unsued codes.
-
-### 8. Font
+### 7. Font
 - Browsers have different default behaviors with applying fonts:
     - FOUT (Flash of Unstyled Text): Show text in default font and then apply the actual font once it's loaded (eg. Microsoft Edge)
     - FOIT (Flash of Invisible Text): Only show text once font is downloaded and applied (eg. Chrome, Firefox, Safari) - But in some cases like Chrome, if font isn't loaded under certain amount of time, it just shows text with default font and later replaces it.
@@ -80,3 +85,6 @@
     - The detailed option could be decided by the content:
         - Important texts (eg. title): use FOUT
         - Unnoticeable texts: use FOIT (changes in the layout would trigger user's attention unnecessarily)
+- Font file size: WOFF2 < WOFF < TTF/OTF < EOT (but some formats may have compabitility issues)
+- Just like image or video source, you could give multiple options for font source (order lighter ones first)
+    - eg. `src: url('font.woff') format('woff'), url('font.ttf) format('truetype);`
