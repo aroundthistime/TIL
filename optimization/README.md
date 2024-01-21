@@ -36,6 +36,7 @@
     - Preconnect consumes quite a bit of CPU especially with credential communication
     - Abusing preconnect would cause bandwidth contention. For the less important ones, you could use <link rel="dns-prefetch" href="~"> to only save time for DNS lookup
     - If the browser is going to be closed after a short term, preload is ineffective (average standard about this is 10 seconds for browers)
+    - Depending on the browser, dynamically adding preconnect during runtime may not work (eg. Safari - O, Chrome - X as of 2024-01-21)
 
 - Practical use cases
     - When origin is known but the exact target is unknown (eg. versioned file, image cdn with queries)
