@@ -100,3 +100,15 @@
     - Dynamically added content
     - Customized web font (FOIT, FOUT)
 - Add wrapper to add element of unknown size without layout shiting (could utilize aspect-ratio or paddings)
+
+
+### 9. Optimize rerendering
+- Rerenderings of React components could be debugged using React Developers Tool.
+- Global state
+    - Creating objects for using selective properties would trigger unnecessary rerenderings becuase new instance is created everytime.
+    - Comparator function could be added to selector hook to minimize rerendering (eg. shallow comparison, deep comparison, deep-equality)
+
+
+### 10. Heavy computations
+- Delegate task to the worker
+- Declare cache object at the global scope of the module (eg. `const cache = {}`), but it needs to be assured that the same task will be executed multiple times and is worth consuming the memory for cache.
