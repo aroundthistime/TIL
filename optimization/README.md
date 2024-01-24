@@ -71,6 +71,7 @@
         <source ~ />
         <img src="~.jpg" /> // Universal format as an insurance
         </picture>
+- Lazy loading based on intersection observer can be easily implemented with [react-lazyload](https://www.npmjs.com/package/react-lazyload) library (but this creates additional DOM, which might break snapshot tests)
 
 ### 7. Font
 - Browsers have different default behaviors with applying fonts:
@@ -89,3 +90,13 @@
 - Font file size: WOFF2 < WOFF < TTF/OTF < EOT (but some formats may have compabitility issues)
 - Just like image or video source, you could give multiple options for font source (order lighter ones first)
     - eg. `src: url('font.woff') format('woff'), url('font.ttf) format('truetype);`
+
+
+### 8. Layout shifting
+- CLS (Circumulative Layout Shift): Compute layout shift of the page and return value from 0 ~ 1 (0 means no layout shift. 0.1 or less is considered to be the ideal value)
+- Possible causes of layout shifting:
+    - Img elements without size information
+    - Ad element without size information
+    - Dynamically added content
+    - Customized web font (FOIT, FOUT)
+- Add wrapper to add element of unknown size without layout shiting (could utilize aspect-ratio or paddings)
