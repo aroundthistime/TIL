@@ -83,4 +83,7 @@
     - Environments outside Web (eg. React Native)
 
 ### 5. SSR (Server Side Rendering) vs RSC
-- 
+- Both techniques involve rendering on server side for improving performance.
+- SSR generates HTML + JS bundle for each request.
+- SSR could perform data fetching + processing from server side as well, but only on page level.
+- RSC mechanism can distribute the rendering effort between server and the client depending on the interactivity of the component.
