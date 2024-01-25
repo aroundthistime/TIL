@@ -55,13 +55,13 @@
 
 
 ### 2. Overall process of RSC + RCC rendering
-    - Server receives a request
-    - Server serializes the root component in a form of JSON tree
-    - Based on the JSON, server creates HTML (If RSC in the tree returns `Promise`, it is filled with template which will be replaced with actual render output of RSC)
-    - Server sends client HTML + JS bundle required for Client Component rendering
-    - Client starts rendering client components by hydration
-    - Server sends RSC payload when asynchronous RSC rendering is complete (each independently)
-    - Client parses the payload and updates DOM tree
+(1) Server receives a request<br>
+(2) Server serializes the root component in a form of JSON tree<br>
+(3) Based on the JSON, server creates HTML (If RSC in the tree returns `Promise`, it is filled with template which will be replaced with actual render output of RSC)<br>
+(4) Server sends client HTML + JS bundle required for Client Component rendering<br>
+(5) Client starts rendering client components by hydration<br>
+(6) Server sends RSC payload when asynchronous RSC rendering is complete (each independently)<br>
+(7) Client parses the payload and updates DOM tree<br>
 
 ### 3. RSC Payload
 - Representation of rendered React Server Component tree.
@@ -81,3 +81,6 @@
     - Interval refetch (showing fresh data even without user interactions)
     - Offline queries that do not require network
     - Environments outside Web (eg. React Native)
+
+### 5. SSR (Server Side Rendering) vs RSC
+- 
