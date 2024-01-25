@@ -1,6 +1,15 @@
 # React Native
 
-### 1. useFocusEffect
+### 1. React Native
+- React Native (like React JS) uses Virtual DOM but the actual rendering is done by Native APIs (Java API, Object-C, ..)
+    - It is not exactly a virtual "DOM" because React Native does not use DOM APIs, but it has a similar concept of using tree hierarchy to observe the updates and minimize updates. (updates are processed in batch just like it does in React JS)
+- React Native uses dedicated elements types (eg. `View`, `Text`) which is converted to the appropriate native element of the OS platform.
+- React JS uses React-Router whereas React Native uses React Navigation
+- The rendering lifecycle of react native components follow the native lifecycle internally.
+![React Native Component Life-cycle](image.png)
+
+
+### 2. useFocusEffect
 - `useFocusEffect` can be used to run side-effects when the screen is focused
 - `useFocusEffect` is shares similar logic as `useEffect`, but does not take dependencies array as the second parameter.
 - As `useEffect` works, the function passed to `useFocusEffect` could return a callback function the screen is no longer focused
