@@ -58,9 +58,9 @@
     - Server receives a request
     - Server serializes the root component in a form of JSON tree
     - Based on the JSON, server creates HTML (If RSC in the tree returns `Promise`, it is filled with template which will be replaced with actual render output of RSC)
-    - Server sends client HTML + JS bundle required for RCC rendering
+    - Server sends client HTML + JS bundle required for Client Component rendering
     - Client starts rendering client components by hydration
-    - Server sends RSC payload when asynchronous RSC rendering is complete (one by one)
+    - Server sends RSC payload when asynchronous RSC rendering is complete (each independently)
     - Client parses the payload and updates DOM tree
 
 ### 3. RSC Payload
