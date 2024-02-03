@@ -30,4 +30,13 @@ React.createElement(
 (1) JSX code is written.<br>
 (2) JSX code is converted to `React.createElement` by `Babel`<br>
 (3) `React.createElement` code will create *Virtual DOM element* with its parameters.<br>
-(4) `ReactDOM` library will render *Virtual DOM elements* inside actual DOM container.
+(4) `ReactDOM` library will render *Virtual DOM elements* inside actual DOM container. (`ReactDOM.render`)
+
+
+### 3. Pure Component
+- Components which always render the same output for the same `state` and `props`.
+- For function components:
+    - `props`, `React.memo` could be used to memoize the component and prevent from rerendering when same `props` is given. (`React.memo` is a HOC)
+    - `state`, function component can compare the state and optimize rerendering on its own.
+- For class components:
+    - components extending `React.PureComponent` instead of `React.Component` becomes pure components and will do shallow comparison of `props` and `state` to prevent unnecessary rerendering (based on `shouldComponentUpdate` lifecycle method)
