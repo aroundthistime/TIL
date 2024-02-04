@@ -48,6 +48,14 @@ class A {
     - Code inside `async functions` will be converted to `Promises`, which are chained using `next` method of `Generator` .
     - The tranpiling of `Babel` will change `async` function into function which returns `Promise` in the way mentioned above.
 ```
+// Original Code
+const b = async() => {
+    console.log('b1');
+    await a();
+    console.log('b2');
+}
+
+// Transpiled Code
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
