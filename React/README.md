@@ -40,3 +40,5 @@ React.createElement(
     - `state`, function component can compare the state and optimize rerendering on its own.
 - For class components:
     - components extending `React.PureComponent` instead of `React.Component` becomes pure components and will do shallow comparison of `props` and `state` to prevent unnecessary rerendering (based on `shouldComponentUpdate` lifecycle method)
+- During development, React provides *Strict Mode* where functions of each components are executed twice. This is to validate whether a component is pure or not.
+
