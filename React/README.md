@@ -26,11 +26,18 @@ React.createElement(
     - element type
     - props
     - children
-- Process of rendering JSX element:
+- Process of rendering JSX element (*before React 17*):<br>
 (1) JSX code is written.<br>
-(2) JSX code is converted to `React.createElement` by `Babel`<br>
+(2) JSX code is converted to `React.createElement` by *Babel* (Reason why you needed to import `React` inside files with `jsx`, because `createElement` is required for compiling)<br>
 (3) `React.createElement` code will create *Virtual DOM element* with its parameters.<br>
-(4) `ReactDOM` library will render *Virtual DOM elements* inside actual DOM container. (`ReactDOM.render`)
+(4) `ReactDOM` library will render *Virtual DOM elements* inside actual DOM container. (`ReactDOM.render`)<br><br>
+
+- Process of rendering JSX element (*starting from React 17*)<br>
+(1) JSX code is written.<br>
+(2) During compile process, *Babel* will import `react/jsx-runtime` automatically inside files containing `jsx` and call method from the imported library which converts `jsx` into *React Virtual Element*. (<u>`jsx` compiling no longer uses `React.createElement`</u> which is why importing `React` is no longer mandatory)<br>
+(3) `ReactDOM` library will render *Virtual DOM elements* inside actual DOM container.
+
+- React 17 still provides `React.createElement` in case you want to create elements without using `jsx`.
 
 
 ### 3. Pure Component
