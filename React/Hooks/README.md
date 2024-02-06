@@ -103,6 +103,39 @@ const doubleIncreaseHandler = () => {
         - Event handling logic should be done inside event handler with full context of the event, not inside Effects.
 
 
+### 5. useLayoutEffect
+- Similar to `useEffect`, but the **`Effect` is fired before browser repaint**.
+- `useLayoutEffect` runs before `repaint` but after `layout` or `reflow`. Therefore you can utilize `useLayoutEffect` to update measure layout before screen repaint.
+```
+// Example code using useLayoutEffect to set tooltip height based on layout measurement
+const Tooltip = () => {
+    const ref = useRef(null);
+    const [tooltipHeight, setTooltipHeight] = useState(0); // You don't know real height yet (fill dummy value)
+
+    useLayoutEffect(() => {
+        const { height } = ref.current.getBoundingClientRect();
+        setTooltipHeight(height); // Re-render now that you know the real height
+    }, []);
+}
+```
+
+- The detailed steps on how the above code works:
+(1) `Tooltip` renders with dummy initial value.<br>
+(2) `React` puts `Tooltip` inside `DOM` and runs `Effect` inside `useLayoutEffect`.<br>
+(3) `useLayoutEffect` measures actual height of tooltip content and triggers immediate re-rendering.<br>
+(4) `Tooltip` is rerendered with actual height.<br>
+(5) `React` updates it to the DOM and **browser finally displays the `Tooltip`**<br><br>
+
+- `useLayoutEffect` could be used for the following purposes:
+    - **Render initial content** (because **`useLayoutEffect` could trigger immediate re--rendering before `(re)paint`, the user cannot see the initial render result**)
+    - **Measure the layout before browser paints** the screen (and possibily use it to render)
+
+- `useLayoutEffect` runs synchronously and blocks `repaint` which could drop performance. Therefore in most of the cases it is recommended to use `useEffect`.
+- `useLayoutEffect` cannot run on the server since there is not layout information.
+    - `useIsomorphicLayoutEffect`: Hook provided by `usehooks-ts` library to use `useLayoutEffect` in server side. In the server, it is `useEffect` and on the client it becomes `useLayoutEffect`.
+
+
+
 
 ### 1. useImperativeHandle
 - Hook used to customzie the handle exposed as a `ref`.
