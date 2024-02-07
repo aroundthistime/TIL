@@ -39,14 +39,16 @@
         - Tree for finding the node with highest or lowest priority.
         - In `Max heap`, the key of **parent node should be equal or greater than its child nodes**. (doesn't matter whether the child node exists between left or right side) - will be opposite for `Min Heap`
         - **`Heap` is not sorted**. It could be partially sorted but **the focus is one getting one root node**.
+        - `O(1)` for getting the priority node.
         - `Heap` is a Data Structure implmenting an abstract data type called `priority queue`.
         - Could be used for **`heap sorting alghorithm` or `graph algorithms` (eg. `Djkstra`)**
-        - Common implementation will be `binary heap`, which is a `complete binary tree`.
+        - Common implementation will be `binary heap`, which is a `complete binary tree`. (`insert` or `delete` will take `O(logn)`)
 
-- Possible usecases:
+- Possible usecases:<br>
 (1) Sorting items<br>
 (2) Search Trees (eg. `binary search tree`)<br>
 (3) AST (Abstract Syntax Tree) in programming languages<br>
 (4) DOM Tree<br>
 (5) Class Hierachy<br>
 (6) File Systems (eg. Directory Structure)<br>
+
