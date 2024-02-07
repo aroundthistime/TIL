@@ -23,6 +23,7 @@
 - **Quick Sort**
     - Set **`Pivot` which will be the standard**, and place smaller elements on the left, greater elements on the right.
     - **`O(nlogn)`** but could show **`O(n**2)` in worst case if `Pivot` is not properly set** and does not effectively divide the array in half (left, right).
+    - Example of worst case: When array is already sorted and `pivot` is set as the first element of the array (but this could be resolved if pivot is set as the median positioned element)
 
 
 - **Merge sort vs Quick Sort**
