@@ -19,3 +19,13 @@
 - **Merge Sort**
     - Divide array in half till the size becomes one, and perform sorting when combining them. (`Divide-and-Conquer`)
     - **`O(nlogn)` performance**
+
+- **Quick Sort**
+    - Set **`Pivot` which will be the standard**, and place smaller elements on the left, greater elements on the right.
+    - **`O(nlogn)`** but could show **`O(n**2)` in worst case if `Pivot` is not properly set** and does not effectively divide the array in half (left, right).
+
+
+- **Merge sort vs Quick Sort**
+    - They both show **`O(nlogn)` performance on average**, but **`Quick Sort` could show `O(n**2)` performance in the worst case** (depending on the pivot), whereas `Merge Sort` shows consistent performance.
+    - **`Quick Sort` shows better performance with smaller sized array**, while **`Merge Sort` shows better performance with larger** ones.
+    - **`Merge Sort` takes extra memory consumption** since sorting is **not done in place**.
