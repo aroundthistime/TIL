@@ -41,6 +41,7 @@
         - **`Heap` is not sorted**. It could be partially sorted but **the focus is one getting one root node**.
         - `Heap` is a Data Structure implmenting an abstract data type called `priority queue`.
         - Could be used for **`heap sorting alghorithm` or `graph algorithms` (eg. `Djkstra`)**
+        - Common implementation will be `binary heap`, which is a `complete binary tree`.
 
 - Possible usecases:
 (1) Sorting items<br>
