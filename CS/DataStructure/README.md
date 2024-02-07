@@ -34,6 +34,13 @@
         - Takes `O(nlogn)` memory size and `O(nlogn)` time for building.
         - Takes `O(logn + k)` for query operation.
         - `Fenwick Tree`: Similar to `Segment Tree` but with more efficient memory/code size.
+    
+    - **Heap**
+        - Tree for finding the node with highest or lowest priority.
+        - In `Max heap`, the key of **parent node should be equal or greater than its child nodes**. (doesn't matter whether the child node exists between left or right side) - will be opposite for `Min Heap`
+        - **`Heap` is not sorted**. It could be partially sorted but **the focus is one getting one root node**.
+        - `Heap` is a Data Structure implmenting an abstract data type called `priority queue`.
+        - Could be used for **`heap sorting alghorithm` or `graph algorithms` (eg. `Djkstra`)**
 
 - Possible usecases:
 (1) Sorting items<br>
