@@ -1,6 +1,10 @@
 # Algorithm
 
-### 1. Sorting Algorithm
+### 1. Divide-and-Conquer Algorithm
+- `Divide-and-Conquer` is an algorithm design paradigm which **recursively breaks problem into smaller units until they become simple enough to be solve directly**, and then **combines the result** to reach out to the solution.
+- example usage: `quick sort`, `merge sort`, `Karatsuba algorithm`
+
+### 2. Sorting Algorithm
 - **Bubble Sort**
 ![Bubble Sort](image.png)
     - Simplest sorting algorithm which **compares 2 adjacent elements to get the biggest(smallest) element on each iteration**.
