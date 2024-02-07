@@ -58,6 +58,7 @@
 - `Hash Table` uses **`hash function` which takes `key` and computes `index` of the `bucket` where the `value` is stored**.
 - `Hash Table` shows **`O(1)` performance for searching and storing item**.
 - The performance of `Hash Table` is determined by `hash function`, especially with regards to `collision` (when the result of `hash function` for different `keys` give out the same result)
+- The possibility of collision is inversely proportional to the number of buckets. Therefore when designing a `Hash Table`, it is important to find the appropriate balance between the performance of memory and time.
 - Possible applications:
     - Password Storage
     - Search Algorithms
