@@ -61,5 +61,6 @@
 - Possible applications:
     - Password Storage
     - Search Algorithms
+    - Caching
     - File comparison
     - DB indexing
