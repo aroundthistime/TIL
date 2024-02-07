@@ -41,14 +41,25 @@
         - **`Heap` is not sorted**. It could be partially sorted but **the focus is one getting one root node**.
         - `O(1)` for getting the priority node.
         - `Heap` is a Data Structure implmenting an abstract data type called `priority queue`.
-        - Could be used for **`heap sorting alghorithm` or `graph algorithms` (eg. `Djkstra`)**
+        - Could be used for **`heap sorting alghorithm` or `graph algorithms` (eg. `Djkstra`)** (and also load-balancing)
         - Common implementation will be `binary heap`, which is a `complete binary tree`. (`insert` or `delete` will take `O(logn)`)
 
-- Possible usecases:<br>
-(1) Sorting items<br>
-(2) Search Trees (eg. `binary search tree`)<br>
-(3) AST (Abstract Syntax Tree) in programming languages<br>
-(4) DOM Tree<br>
-(5) Class Hierachy<br>
-(6) File Systems (eg. Directory Structure)<br>
+- Possible applications:
+    - Sorting items
+    - Search Trees (eg. `binary search tree`)
+    - AST (Abstract Syntax Tree) in programming languages
+    - DOM Tree
+    - Class Hierachy
+    - File Systems (eg. Directory Structure)
 
+
+### 2. Hash Table
+- **`Hash Table` is a data structure which maps `keys` to `values`**.
+- `Hash Table` uses **`hash function` which takes `key` and computes `index` of the `bucket` where the `value` is stored**.
+- `Hash Table` shows **`O(1)` performance for searching and storing item**.
+- The performance of `Hash Table` is determined by `hash function`, especially with regards to `collision` (when the result of `hash function` for different `keys` give out the same result)
+- Possible applications:
+    - Password Storage
+    - Search Algorithms
+    - File comparison
+    - DB indexing
