@@ -15,3 +15,7 @@
     - Sorting algorithm using **`Heap` data structure to find min(max) value one by one**.
     - could be useful when sorting the entire elements is not necessary, but **only for extracting a few biggest** (smallest) values.
     - **`O(nlogn)` performance** (assuming that it's using binary heap)
+
+- **Merge Sort**
+    - Divide array in half till the size becomes one, and perform sorting when combining them. (`Divide-and-Conquer`)
+    - **`O(nlogn)` performance**
