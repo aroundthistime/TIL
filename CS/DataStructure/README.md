@@ -1,0 +1,44 @@
+### Data Structure
+
+### 1. Tree
+- **`Tree` is a hierarchical data structure** in which a collection of elements known as **nodes are connected to each other via edges such that there exists exactly one path between any two nodes**.
+- A node can be connected one, more or 0 number of children. But every node except for the `Root node` must have one parent.
+- No cycles are allowed in `Tree` structure.
+- Types of `Tree` structure:
+    - **Binary Search Tree (BST)**
+        - The **left subtree of a certain node should be smaller** than the node.
+        - The **right subtree of a cetain node should be bigger** than the node.
+        - Capable of **searching an item in `O(log n)`** (height of the tree)
+        - Used for searching when items are entered/left often (eg. could be used to implment `set`)
+
+    - **Self Balancing Tree**
+        - A type of `Balanced Tree` which **automatically updates the structure on `insert` or `delete` operation to minimize the height** of the tree (since the height of the tree is a critical factor for the search performance).
+
+    - **AVL Tree**
+        - **`AVL Tree` is a self-balancing BST** in which the **gap between the height of left subtree and the right subtree cannot be bigger than 1** (If the nodes inside `BST` is too much focused on one side, the cost for searching an item would increase.).
+        - `AVL Tree` shows balanced structure, but because of that requires heavy cost for `insert` and `delete` operations.
+        - `AVG Tree` still shows `O(log n)` performance for search operation, but prevents worst cases of one-sided `BST`.
+
+    - **Red-Black Tree**
+        - **`Self Balancing BST` in which nodes take 1 extra bit containing Red or Black**.
+        - The color of each node will be used to decide the structure of the tree on insert/delete operation.
+            - The root of the tree is always black.
+            - There are no two adjacent red nodes (A red node cannot have a red parent or red child).
+            - Every path from a node (including root) to any of its descendants’ NULL nodes has the same number of black nodes.
+            - All leaf (NULL) nodes are black nodes.
+        - **Compared to `AVL Tree`, `Red-Black Tree` shows better performance with `insert` or `delete`** operation but the **search performance is not as effective** (since it puts less effort to balanace the tree)
+
+    - **Segment Tree**
+        - Tree for storing intervals or segments.
+        - Could be used to do calculation or query based on range.
+        - Takes `O(nlogn)` memory size and `O(nlogn)` time for building.
+        - Takes `O(logn + k)` for query operation.
+        - `Fenwick Tree`: Similar to `Segment Tree` but with more efficient memory/code size.
+
+- Possible usecases:
+(1) Sorting items<br>
+(2) Search Trees (eg. `binary search tree`)<br>
+(3) AST (Abstract Syntax Tree) in programming languages<br>
+(4) DOM Tree<br>
+(5) Class Hierachy<br>
+(6) File Systems (eg. Directory Structure)<br>
