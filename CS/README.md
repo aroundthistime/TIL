@@ -35,9 +35,9 @@
     </thead>
     <tbody>
         <tr>
-            <th>**Monolithic Architecture**</th>
+            <th><strong>Monolithic Architecture</strong></th>
             <td>
-                Architecture of **implementing the entire system in one unit**.
+                Architecture of <strong>implementing the entire system in one unit</strong>.
             </td>
             <td>
                 - Easy to setup dev environment (only have to setup things once)<br><br>
@@ -52,9 +52,9 @@
             </td>
         </tr>
         <tr>
-            <th>**MicroService Architecture</th>
+            <th></strong>MicroService Architecture</strong></th>
             <td>
-                Architecture of **implementing the system in smaller units and combining them to organize the entire application**. Each component will **interact with each other via `APIs` and will not expose its internal logic**.
+                Architecture of <strong>implementing the system in smaller units and combining them to organize the entire application</strong>. Each component will <strong>interact with each other via `APIs` and will not expose its internal logic</strong>.
             </td>
             <td>
                 - Able to develop each part of the system independently.<br><br>
