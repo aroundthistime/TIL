@@ -44,6 +44,7 @@
 - **`DNS Cache` has `TTL (Time To Live)`** attribute which is used to **set when the cached data becomes stale**, and therefore has to be updated from higher level DNS.
 - Starting from `Root DNS Server`, they do not *cache* the data.
 - `DNS Servers` do not kindly query the `ip address` for you. It just returns information about the appropriate server where you might find the data. Then the `Local DNS Server` would do the actual interaction with the value.
+- `DNS Servers` use `UDP` by default, but could use `TCP` as fallback (eg. packet size is too big to put in single `UDP Packet`)
 - Detailed steps of `DNS lookup`:
 
 ![DNS Lookup steps](image.png)
@@ -181,6 +182,7 @@
                 - Live Streaming<br>
                 - Online Games<br>
                 - Video Chats
+                - DNS (but uses TCP if the size if too big to put in one UDP packet)
             </td>
         </tr>
     </thead>
