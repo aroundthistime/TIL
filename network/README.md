@@ -57,3 +57,53 @@
 (7) `Local DNS Server` would query `Authoritative DNS Server` will return the `ip address`.<br><br>
 (8) `Local DNS Server` would tell `DNS Resolver` the returned `ip address` (could fail of course if the given `domain name` was incorrect).<br><br>
 (9) `DNS Resolver` gives result to the browser so that it could send request to the server with the ip address.<br><br>
+
+
+### 3. OSI 7-layer (OSI Model)
+
+![OSI Model](image-1.png)
+
+- `OSI Model` is a conceptual model from `ISO (International Organization for Standardization)` defining a common basis of developing an **interconnection system**.
+- `OSI Model`splits communication systems into 7 abstract layers.
+    - Each layer is stacked over another and can **use the functionality of the layer right below** or **provide functionality for the layer right above** (the layers can only interact with other adjacent layers)
+
+    - **Application Layer (7)**
+        - The only layer which **interacts directly with user's data**.
+        - This is **not a client software application (eg. `browser`) but the layer those kinds of applications interact with**.
+        - Example protocols: `HTTP`, `SMTP` (Simple Mail Transfer Protocol), `FTP`, ..
+    
+    - **Presentation Layer (6)**
+        - Layer **preparing data in a way that the `Application Layer` can use (eg. translation, encryption, compression)**.
+        - This enables communication between 2 devices which might have different encoding system, and also does compression to reduce communication cost when sending data.
+        - So basically a layer which **formats the data so that the `Application Layer` can use or efficient for sending**.
+
+    - **Session Layer (5)**
+        - Layer responsible for **opening and closing communication** between two devices.
+        - **`Session`: the time between when communication is opened and closed**.
+        - **`Session Layer` ensures that `session` stays open during the transfer, and is closed immediately once transfer is complete** (avoid wasting resources).
+        - `Session Layer` also sets **`checkpoints` in the middle of tranfer** for synchronization, so that **transfer could be resumed from the last checkpoint on crash or any errors**. (eg. set checkpoints on every 5mb for sending 100mb file)
+    
+    - **Transport Layer (4)**
+        - Layer responsible for **reliable transmisison of data segments between two end-points**.
+        - Also manages **flow control** (control optimal transmission speed) and **error control** (check if things are delivered correctly and retransfer if failed).
+        - eg. `TCP`, `UDP`
+
+    - **Network Layer (3)**
+        - **Transform `segments` of `Transport Layer` to smaller units (`packet`) or reassemble them**.
+        - **Find physical path between end-points (`Routing`)**
+        - `Network Layer` is unnecessary if two end-points are on the same network.
+        - eg. `IP`, `ICMP`, `IGMP`, `IPSec`
+    
+    - **Data Link Layer (2)**
+        - Responsible for **data transfer for directly connected nodes**.
+        - `Packets` from `Network Layer` will be split into `frames` here.
+        - `Data Link Layer` is responsible for the following tasks between **two physically connected nodes**:
+            - establish and terminate connection
+            - flow control
+            - error control
+
+    - **Physical Layer (1)**
+        - **Send data in `bit stream` (1 or 0) via physical equipment** (eg. `cable`, `switch`)
+
+- Modern internets do not necessarily follow OSI model in a strict way, but still **`OSI Model` gives benefits narrowing down the issue while debugging**.
+- To communicate on an `OSI Model` system, the data has to **go down 7 layers of the sender and go up 7 layers of the receiver**.
