@@ -107,3 +107,81 @@
 
 - Modern internets do not necessarily follow OSI model in a strict way, but still **`OSI Model` gives benefits narrowing down the issue while debugging**.
 - To communicate on an `OSI Model` system, the data has to **go down 7 layers of the sender and go up 7 layers of the receiver**.
+
+### 2. TCP vs UDP
+- `TCP` and `UDP` are both protocols which applies to the `Transport Layer (4th layer)` of `OSI Model`.<br>
+
+<table>
+    <thead>
+        <tr>
+            <th> </th>
+            <th>
+                <strong>TCP (Transmission Control Protocol)</strong>
+            </th>
+            <th>
+                <strong>UDP (User Datagram Protocol)</strong>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <strong>Connection Type</strong>
+            </th>
+            <td>
+                Requires established network before sending data (<strong>3-way Handshaking</strong>)
+            </td>
+            <td>
+                No connection for sending data
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <strong>Ensure data order</strong>
+            </th>
+            <td>O</td>
+            <td>X</td>
+        </tr>
+        <tr>
+            <th>
+                <strong>Deliver result check</strong>
+            </th>
+            <td>O (+ resend on failure)</td>
+            <td>X</td>
+        </tr>
+        <tr>
+            <th>
+                <strong>Deliver result check</strong>
+            </th>
+            <td>O (+ resend on failure)</td>
+            <td>X (Lost data cannot be retrieved)</td>
+        </tr>
+        <tr>
+            <th>
+                <strong>Communication method</strong>
+            </th>
+            <td>1:1</td>
+            <td>1:1, 1:N, N:N (broadcasting possible)</td>
+        </tr>
+        <tr>
+            <th>
+                <strong>Overall</strong>
+            </th>
+            <td>Slow but relibale</td>
+            <td>Fast but unreliable</td>
+        </tr>
+        <tr>
+            <th>
+                <strong>Suitable for</strong>
+            </th>
+            <td>
+                - Sending files<br>
+                - Web browsing<br>
+                - Mails or Texts
+            </td>
+            <td>
+                - Live Streaming<br>
+                - Online Games<br>
+                - Video Chats
+            </td>
+        </tr>
+    </thead>
+</table>
