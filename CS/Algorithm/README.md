@@ -29,7 +29,7 @@
 - **Merge sort vs Quick Sort**
     - They both show **`O(nlogn)` performance on average**, but **`Quick Sort` could show `O(n**2)` performance in the worst case** (depending on the pivot), whereas `Merge Sort` shows consistent performance.
     - **`Quick Sort` shows better performance with smaller sized array**, while **`Merge Sort` shows better performance with larger** ones.
-    - **`Merge Sort` takes extra memory consumption** since sorting is **not done in place**.
+    - **`Merge Sort` takes extra memory consumption** since sorting is **not done in place** (**Memory complexity for merging = `O(n)` / for recursive call stack = `O(logn)` => Sum becomes `O(n)`**).
 
 - **Insertion Sort**
     - **Create a new array** and **insert items one by one into the array at appropriate position**.
