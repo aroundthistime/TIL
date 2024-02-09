@@ -149,7 +149,7 @@
                 <strong>Connection Type</strong>
             </th>
             <td>
-                Requires established network before sending data (<strong>3-way Handshaking</strong>) - which is <strong>why IP is required</strong>
+                Requires established network before sending data (<strong>3-way Handshaking</strong>)</strong>
             </td>
             <td>
                 No connection for sending data
@@ -208,3 +208,25 @@
         </tr>
     </thead>
 </table>
+
+
+### 4. IP (Internet Protocol)
+- `IP` is a protocol or ruleset for **routing and addressing `packets` so that data could travel accross network and arrive at correct destination**. (`Network Layer (3)` of `OSI Model`)
+- **To each `packet`, IP information is attached** which would help `routers` to send the `packet` to the right place.
+- **`IP Address`**: **Unique identifier assigned to a device or domain connected to the internet**. **For each `packet`, the `ip address` of the sender and the intended recipient will be added**.
+- `IP Header`: Information added to `ip packets` to send the packet in the correct place.
+    - `Header Length`
+    - `Packet Length`
+    - `TTL` (Time-to-Live)
+    - `Transport Protocol` (eg. `TCP`, `UDP`)
+- `IP` might send **packets towards same destination via different routes**. (for performance)
+- Major versions of `Internet Protocol`:
+    - `IPv4`
+        - **address format**: **4 sets of numbers separated by dots** (**`32-bit` format** - allows 2**32 unique addresses)
+        - eg. sample address: `192.0.2.1`
+        - As the internet grew, there was limitation on the `ip addresses` we could make with `IPv4`. Therefore `IPv6` was introduced (still, `IPv4` is on the use)
+    
+    - `IPv6`
+        - **address format**: **sets of numbers/letters separated by single or double colons** (**`128-bit` format** - allows 2**128 unique addresses)
+        - eg. sample address: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
+        - `IPv6` is concurrently used along with `Ipv4` (because so many web sites are already running on `IPv4`)
