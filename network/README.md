@@ -109,7 +109,28 @@
 - Modern internets do not necessarily follow OSI model in a strict way, but still **`OSI Model` gives benefits narrowing down the issue while debugging**.
 - To communicate on an `OSI Model` system, the data has to **go down 7 layers of the sender and go up 7 layers of the receiver**.
 
-### 2. TCP vs UDP
+
+### 2. TCP/IP Model
+- `TCP/IP Model` is a concise implementation model of communication system (unlike `OSI Model` which is a bit logical), introducced before the `OSI Model` but is most widely used.
+
+![TCP/IP Model](image-2.png)
+- `TCP/IP Model` has 4 layers:
+    - **Application Layer (4)**
+        - Sum of `Session Layer`, `Presentation Layer`, `Application Layer` of `OSI Model`.
+        - eg. `HTTP`, `SMTP`, `SNMP`, `FTP`, `SSH`
+    
+    - **Transport Layer (3)**
+        - Same as `Transport Layer` of `OSI Model` (send data)
+        - eg. `TCP`, `UDP`
+    
+    - **Internet Layer (2)**
+        - Same as `Network Layer` of `OSI Model`.
+        - eg. `IP`, `ARP`, `ICMP`
+
+    - **Network Interface Layer(1)**
+        - Sum of `Physical Layer` and `Data Link Layer` of `OSI Model`.
+
+### 3. TCP vs UDP
 - `TCP` and `UDP` are both protocols which applies to the `Transport Layer (4th layer)` of `OSI Model`.<br>
 
 <table>
@@ -128,7 +149,7 @@
                 <strong>Connection Type</strong>
             </th>
             <td>
-                Requires established network before sending data (<strong>3-way Handshaking</strong>)
+                Requires established network before sending data (<strong>3-way Handshaking</strong>) - which is <strong>why IP is required</strong>
             </td>
             <td>
                 No connection for sending data
@@ -181,7 +202,7 @@
             <td>
                 - Live Streaming<br>
                 - Online Games<br>
-                - Video Chats
+                - Video Chats<br>
                 - DNS (but uses TCP if the size if too big to put in one UDP packet)
             </td>
         </tr>
