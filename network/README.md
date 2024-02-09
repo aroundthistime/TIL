@@ -230,3 +230,10 @@
         - **address format**: **sets of numbers/letters separated by single or double colons** (**`128-bit` format** - allows 2**128 unique addresses)
         - eg. sample address: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
         - `IPv6` is concurrently used along with `Ipv4` (because so many web sites are already running on `IPv4`)
+
+
+### 5. Addressing Methods
+- **`Unicast`**: Transferring a message **to one specific node** (`one-to-one`). (eg. Web Browsing, File Transfer)
+- **`Broadcast`**: Transferring a message to **all recipients simultaneously** (`one-to-all`). (eg. TV broacasting, software updates)
+- **`Muxlticast`**: Transferring a message to **a group of nodes** (`one-to-many` or `many-to-many`)
+- **`Anycast`**: Transferring  a message to **any one of the potential receivers node group** (usually set by `distance` or `transfer cost` based on `routing algorithm`). (eg. CDN, DNS)
