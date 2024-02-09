@@ -231,6 +231,16 @@
         - eg. sample address: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`
         - `IPv6` is concurrently used along with `Ipv4` (because so many web sites are already running on `IPv4`)
 
+- `Static` vs `Dynamic` IP Address
+    - `Static IP Address`
+        - **`IP Address` that does not change**.
+        - For most of the cases, `Static IP Address` is not required.
+        - When to use `Static IP Address`: `VPN`, `Security purpose whitelist`, .. (so basically when you need external resource to have your ip address remembered)
+
+    - `Dynamic IP Address`
+        - **`IP Address` which is assigned when connected to network, and change over time**.
+        - `Dynamic IP address` is used not only by client devices but also by servers. For servers, it is required to setup so dynamic `DNS` so that `DNS Entry` will be updated when the `Dynamic IP Address` of your server changes.
+
 
 ### 5. Addressing Methods
 - **`Unicast`**: Transferring a message **to one specific node** (`one-to-one`). (eg. Web Browsing, File Transfer)
