@@ -240,6 +240,7 @@
     - `Dynamic IP Address`
         - **`IP Address` which is assigned when connected to network, and change over time**.
         - `Dynamic IP address` is used not only by client devices but also by servers. For servers, it is required to setup so dynamic `DNS` so that `DNS Entry` will be updated when the `Dynamic IP Address` of your server changes.
+        - `Dynamic IP address` shows better resource management (since only devices connected to the internet would be assigned an address), and also supports mobile devices (eg. phone, laptop) which will frequently access via different newtwork.
 
 - `Private` vs `Private` IP address
 <table>
