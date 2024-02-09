@@ -247,3 +247,34 @@
 - **`Broadcast`**: Transferring a message to **all recipients simultaneously** (`one-to-all`). (eg. TV broacasting, software updates)
 - **`Muxlticast`**: Transferring a message to **a group of nodes** (`one-to-many` or `many-to-many`)
 - **`Anycast`**: Transferring  a message to **any one of the potential receivers node group** (usually set by `distance` or `transfer cost` based on `routing algorithm`). (eg. CDN, DNS)
+
+
+### 6. HTTPS
+- `Protocol` which added encryption to `HTTP` for security reasons.
+- Uses `SSL certificate` which contains website's `public key` and other information of the website.
+- `SSL` certificate is based on `SSL (Secure Socket Layer)` or `TLS (Transport Layer Security)` techniques. `TLS` is an improved verseion of `SSL`, but people just say that `HTTPS` is based on `TLS` for convenience.
+- Because using `Asymmetric Key (비대칭키)` for every comunication takes heavy cost, it is only used once to create classified `Symmetric key (대칭키)` at the beginning.
+- Detailed steps of `SSL Handshake` in `HTTPS` communication:
+    - `Client Hello`:**`Client` initiates the communication**
+        - **Encryption methods client can use**
+        - **Random value** - which will be used to create the `Symmetric key`.
+
+    - `Server Hello`: Server gives response
+        - `Cipher suite`: **Encryption method that the server chose**
+        - **`SSL certificate` containing the `public key` of the server**. (is **encryptyed by CA `private key`** - Certificate Authority)
+        - **Server generated random value**
+
+    - **`Client` validates the received `SSL certificate`**.
+        - Browser has a list of trusted `CA` and their `public keys`.
+        - `Client` will try to see if the `CA` is in the list, and the `SSL` is decrypted with the `public key` of the `CA`.
+        - If the `SSL certificate` is considered `invalid`, browser will throw warning.
+
+    - **`Client` creates `Premaster secret`**
+        - `Premaster secret` is created using two random values created from each side (this will be used to create `session key`).
+        - The **client will encrypt `Premaster secret` by public key of the server, and send it to the server**.
+
+    - **`Server` creates `Session key` from received `Premaster Secret`**
+        - `Server` gets will decrypt received `premaster secret` and obtain `master secret`.
+        - Now, both `Client` and the `Server` have `pre-master secret`. They will give it along with other information as input of `PRF (Pseudo-Random Function)` to create the `Session Key`.
+
+    - **`Server` and `Client` will use this `Session key` as `Symmetric Key` along with `agreed cryptographic algorithm` till the `Session` expires**.
