@@ -86,7 +86,25 @@
     
     - **Transport Layer (4)**
         - Layer responsible for **reliable transmisison of data segments between two end-points**.
-        - Also manages **flow control** (control optimal transmission speed) and **error control** (check if things are delivered correctly and retransfer if failed).
+        - **Flow control**
+            - **Control the data processing speed of `sender`** to **prevent buffer overflow of `recipient` due to the gap of processing speed** between `Sender` and `Recipient`.
+            - Based on **`Sliding Window Algorithm`** (**send packets as the size of `sliding window` and move the window when `ACK` signal** has been returned)
+        
+        - **Error control**
+            - **Check if packets are delivered correctly and resend if failed**.
+            - Each `packet` will be assigned `unique id`. `Transport Layer` of the `recipient` can detect lost data by checking this value while assembling `packets`.
+            - **`Stop and Wait`**
+                - send data **one by one after receiving `ACK`** (inefficient)
+
+            - **`Go-Back-N`**
+                - **Continuosly send data, and go back to the data with error and restart if `NACK` is given**.
+                - **Resending process could include the correctly trasnfered** data (inefficient).
+                - eg. If `NACK` is given with data 3, resend data 3, 4, ..
+
+            - **`SR (Selective Repeat)`**
+                - **Only resend failed data (`NACK`)**
+                - **Requires extra buffer and sorting process** to assemble the packets in a correct way from the `recipient`. (since the data inside buffer of `recipient` is not in order)
+
         - eg. `TCP`, `UDP`
 
     - **Network Layer (3)**
