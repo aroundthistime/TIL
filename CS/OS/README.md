@@ -10,7 +10,9 @@
 - `Kernel` will be an interface between `hardware` and the `software`:
     - **`Resource Management`**: Manage **system resources (eg. `CPU`, `Memory`, `Disk space`)** - includes **(de)allocation of resources while setting priorities between processes**.
     - **`Process Management`**: Manage **creation, termination, suspension, scheduling, and context switching of processes** and also communication between them.
-    - **`System Call Management`**: Handles system calls to allow applications access to hardware resources (so basically an **interface between the system and the hardware**) - **`System Call` is created when a program wants to send request to the `Kernel` (OS)**
+    - **`System Call Management`**: Handles system calls to allow applications access to hardware resources (so basically an **interface between the system and the hardware**)
+        - **`System Call` is an interface for users or programs to use `Kernel` provided features (OS)**. Programs will create `System Calls` and `Kernel` will execute them.
+        - `System Call` limits the possible ways of using `Kernel` provided services **to protect computer resources**.
     - **`System Security`**: Manages **access control and permissions** to ensure the security of the system.
 
 
@@ -22,6 +24,7 @@
     - In some cases (eg. Program which runs by `multi-process`), **multiple `processes` need to interact with each other**s. This is done by `IPC (Inter-process Communication)`. There could be 2 major ways of enabling communication between processes:
         - **`Message Passing`**: Pass messages between processes via `Kernel` (has overhead)
         - **`Shared Memory`**: Sharing memory between processes (no need to call system call but has several issues - `Producer-Consumer Issue`, `Critical Section`, ..)
+    - The execution context of `process` will be stored inside data structure called `PCB (Process Control Block)`.
 
 - **`Thread`**
     - Smallest sequence of programmed instructions that can be managed independently by a `OS scheduler`.
@@ -82,6 +85,32 @@
 - Multi-CPU: Having multiple `CPUs` and have them all connected to the `memory`.
 - Multi-Core: Implement multiple cores of `registers` and `cache` inside a `CPU`.
 - Multi-Processing: Concurrent execution of multiple tasks. The tasks could interrupt each other and share resources (eg. `CPU`, `memory`)
+
+
+### 5. Context Switching
+- **`OS Kernel` changing the `process` or `thread` running on the `CPU core` into another**.
+
+- Reasons of `Context Switching`:
+    - **Pretend to execute multiple `processes` or `threads` simultaneously**.
+    - **For fair CPU posession time** of each `process` or `thread`.
+    - To **handle task with high priority first**.
+
+- Triggers of `Context Switching`:
+    - **Spent all `Time slice` (amount of time given to use `CPU`)**
+    - Has **`I/O` data to process**. (Because `I/O` is slower than the speed of `CPU cycle`, do something else during `I/O` to prevent blocking and then process the result)
+    - Waiting for a different resource or task.
+    - **`Interrupt`**: Request to interrupt currently executing task (eg. to deal with events)
+
+- Steps of `Context Switching`<br>
+(1) **`Interrupt` occurs triggering `Context Switching`**. (could be hardware interrupt like `timer` or `I/O` / hardware interrupt like `system call` or `signal`)<br><br>
+(2) **`CPU` suspends current task and gives control to the `Kernel`** (`OS`).<br><br>
+(3) **`OS` saves context of the current state** (in **`TCB` or `PCB`** depending on whether it's a thread or process)<br><br>
+(4) `OS` **updates scheduler to determine the next task** (`process` or `thread`).<br><br>
+(5) `OS` **loads context of the next task from corresponding `TCB` or `PCB`**. The values are applied to `CPU register` (eg. `PC (Program Counter)`, `Stack Pointer`) - `Register` is a place to store information for processing tasks from the `CPU`<br><br>
+(6) (Optional) If `Context Switch` involves updates in `memory address`, corresponding updates in `memory management structure` is required. (eg. when switching between `processes` with separate address spaces)<br><br>
+(7) Resume execution<br><br>
+
+- `Context Switching` between `processes` could require additional memory management and also **trigger `Cache Pollution` (`Cache memory` is a shared area between `processes`, but `cache data` from previous `process` is less likely to be used in the new `process`)**.
 
 
 ### 6. Concurrency (동시성) vs Parallelism (병렬성)
