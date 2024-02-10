@@ -82,3 +82,14 @@
 - Multi-CPU: Having multiple `CPUs` and have them all connected to the `memory`.
 - Multi-Core: Implement multiple cores of `registers` and `cache` inside a `CPU`.
 - Multi-Processing: Concurrent execution of multiple tasks. The tasks could interrupt each other and share resources (eg. `CPU`, `memory`)
+
+
+### 6. Concurrency (동시성) vs Parallelism (병렬성)
+- **`Concurrency (동시성)`**
+    - **Looks as if multiple programs are running at once, but is in fact handling multiple processes with `Context Switching`** (so two tasks cannot be processed at the same moment).
+    - can be found at `Multi-Programming` with Single Core.
+
+- **`Parallelism (병렬성)`**
+    - Actually running multiple tasks at the same moment.
+    - Usually requires CPU with multiple core.
+    - `Parallelism` could be achieved even with single core `CPU` if the commands could run all at once (A core of CPU has multiple pipelines. If multiple tasks have no relevance with each other `Parallelism` could be achieved - eg. use different parts of CPU)
