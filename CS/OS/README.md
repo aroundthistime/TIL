@@ -73,3 +73,9 @@
         </tr>
     </tbody>
 </table>
+
+
+### 4. Multi-CPU, Multi-Core, Multi-Tasking
+- Multi-CPU: Having multiple `CPUs` and have them all connected to the `memory`.
+- Multi-Core: Implement multiple cores of `registers` and `cache` inside a `CPU`.
+- Multi-Processing: Concurrent execution of multiple tasks. The tasks could interrupt each other and share resources (eg. `CPU`, `memory`)
