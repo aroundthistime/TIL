@@ -28,6 +28,9 @@
     - **Each `Thread` has its own `Stack`, but shares the rest (eg. `code`, `data`, `heap`) with other threads in the same process**.
         - `Threads` do not share `Stacks` because the structure of `Stack` which contains function call information would get too complex.
         - Because `threads` share resources except for `stack`, they can know the execution result of other `threads` immediately, but requires resource controls.
+    - **Information about a certain thread will be stored inside `Kernel` in a `data structure` called `TCB (Thread Control Block)`**
+        - contains: thread identifier, stack pointer, program counter, ..
+        - **After `Context Switching`, the values could be used to resume the `thread task`**.
 
 - **`Multi-process` vs `Multi-Thread`**
 - `Multi-process` and `Multi-thread` are not mutually exclusive concepts, a program can be `multi-process` and `multi-thread` at the same time.
