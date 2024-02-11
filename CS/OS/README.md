@@ -102,7 +102,7 @@
     - **`Interrupt`**: Request to interrupt currently executing task (eg. to deal with events)
 
 - Steps of `Context Switching`<br>
-(1) **`Interrupt` occurs triggering `Context Switching`**. (could be hardware interrupt like `timer` or `I/O` / hardware interrupt like `system call` or `signal`)<br><br>
+(1) **`Interrupt` occurs triggering `Context Switching`**. (could be hardware interrupt like `timer` or `I/O` request / hardware interrupt like `system call` or `signal`)<br><br>
 (2) **`CPU` suspends current task and gives control to the `Kernel`** (`OS`).<br><br>
 (3) **`OS` saves context of the current state** (in **`TCB` or `PCB`** depending on whether it's a thread or process)<br><br>
 (4) `OS` **updates scheduler to determine the next task** (`process` or `thread`).<br><br>
@@ -195,3 +195,17 @@
 
         - **`DeadLock Detection & Recovery`**
             - Let processes fall `DeadLock`, **periodically check if there's `DeadLock` and apply recovery** methods if one is detected. (eg. **`aborting` and `restarting` the process**)
+
+
+
+## 8. CPU Scheduling
+- **`First Come First Served`**
+    - Execute and finish tasks one by one in the requested order.
+
+- **`Round Robin`**
+    - Similar to `First-Come-First-Served` but limit the amount of time that the task can hold the `CPU`.
+    - If the given time has passed but the task is not finished, the task moves to the back of the `queue`.
+
+- **`Priority`**
+    - Set priorities to tasks.
+    - Could be improved by increasing priority of task which waited in the queue for a long time.
