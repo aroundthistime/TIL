@@ -50,32 +50,32 @@
     <tbody>
         <tr>
             <th>Definition</th>
-            <tr>
+            <td>
                 Program consisting of multiple processes
-            </tr>
-            <tr>
+            </td>
+            <td>
                 Program, the process of which consists of multiple threads
-            </tr>
+            </td>
         </tr>
         <tr>
             <th>Advantages</th>
-            <tr>
+            <td>
                 - Error on certain process does not affect the other.
-            </tr>
-            <tr>
+            </td>
+            <td>
                 - Less memory consume (less <strong>System Call</strong> for memory allocation, <strong>less context switching overhead</strong>)
-            </tr>
+            </td>
         </tr>
         <tr>
             <th>Disadvantages</th>
-            <tr>
+            <td>
                 - Processes cannot interact with each other directly because they do not share the memory (must use IPC)<br><br>
                 - Context switching overhead (interrupt, clearing cache, ..)
-            </tr>
-            <tr>
+            </td>
+            <td>
                 - Error with one thread could affect others<br><br>
                 - Synchronization approach is required with shared resources
-            </tr>
+            </td>
         </tr>
     </tbody>
 </table>
