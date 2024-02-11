@@ -1,11 +1,11 @@
 # OS (Operating System)
 
-### 1. OS
+## 1. OS
 - Program which is loaded by boot program, and manages all other application programs in a computer.
 - `OS` will be in the middle of communication between hardware and the application program.
 
 
-### 2. Kernel
+## 2. Kernel
 - `Kernel` is the core part of `OS`, which will be on the memory of computer by boot program (because `OS` also is a heavy program, it cannot go on the memory entirely. Only the `Kernel` is brought, and the others will be called if necessary)
 - `Kernel` will be an interface between `hardware` and the `software`:
     - **`Resource Management`**: Manage **system resources (eg. `CPU`, `Memory`, `Disk space`)** - includes **(de)allocation of resources while setting priorities between processes**.
@@ -16,7 +16,7 @@
     - **`System Security`**: Manages **access control and permissions** to ensure the security of the system.
 
 
-### 3. Process vs Thread
+## 3. Process vs Thread
 - **`Process`**
     - An **instance of program executed by one or more threads**.
     - Gets **allocated a separate resource by `Operating System`** so that processes are less likely to interfere with each other.
@@ -81,13 +81,13 @@
 </table>
 
 
-### 4. Multi-CPU, Multi-Core, Multi-Tasking
+## 4. Multi-CPU, Multi-Core, Multi-Tasking
 - Multi-CPU: Having multiple `CPUs` and have them all connected to the `memory`.
 - Multi-Core: Implement multiple cores of `registers` and `cache` inside a `CPU`.
 - Multi-Processing: Concurrent execution of multiple tasks. The tasks could interrupt each other and share resources (eg. `CPU`, `memory`)
 
 
-### 5. Context Switching
+## 5. Context Switching
 - **`OS Kernel` changing the `process` or `thread` running on the `CPU core` into another**.
 
 - Reasons of `Context Switching`:
@@ -113,7 +113,7 @@
 - `Context Switching` between `processes` could require additional memory management and also **trigger `Cache Pollution` (`Cache memory` is a shared area between `processes`, but `cache data` from previous `process` is less likely to be used in the new `process`)**.
 
 
-### 6. Concurrency (동시성) vs Parallelism (병렬성)
+## 6. Concurrency (동시성) vs Parallelism (병렬성)
 - **`Concurrency (동시성)`**
     - **Looks as if multiple programs are running at once, but is in fact handling multiple processes with `Context Switching`** (so two tasks cannot be processed at the same moment).
     - can be found at `Multi-Programming` with Single Core.
@@ -124,7 +124,7 @@
     - `Parallelism` could be achieved even with single core `CPU` if the commands could run all at once (A core of CPU has multiple pipelines. If multiple tasks have no relevance with each other `Parallelism` could be achieved - eg. use different parts of CPU)
 
 
-### 7. Critical Section (임계영역)
+## 7. Critical Section (임계영역)
 - **`Critical Section` is a protected section where concurrent access is denied** to prevent unexpected behaviors.
 - **`Mutual Exclusion (상호 배제)`**: **Algorithm preventing simultanous access to shared resource**. Used by `Critical Section` to avoid issues caused by `Race Condition`
     - Key methods:
