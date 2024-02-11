@@ -34,7 +34,7 @@
 
     - **Authoritative DNS Server**
         - `Authoritative DNS Server` is the final holder of `ip address` information.
-        - `Authoritative DNS Server` holds a; the `ip address records` for a certain `domain`.
+        - `Authoritative DNS Server` holds the `ip address records` for a certain `domain`.
 
     - **DNS Resolver (=Recursive DNS Server)**
         - Local system which will get the `domain name` from the result and return the translation result.
