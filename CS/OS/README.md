@@ -122,3 +122,76 @@
     - Actually running multiple tasks at the same moment.
     - Usually requires CPU with multiple core.
     - `Parallelism` could be achieved even with single core `CPU` if the commands could run all at once (A core of CPU has multiple pipelines. If multiple tasks have no relevance with each other `Parallelism` could be achieved - eg. use different parts of CPU)
+
+
+### 7. Critical Section (임계영역)
+- **`Critical Section` is a protected section where concurrent access is denied** to prevent unexpected behaviors.
+- **`Mutual Exclusion (상호 배제)`**: **Algorithm preventing simultanous access to shared resource**. Used by `Critical Section` to avoid issues caused by `Race Condition`
+    - Key methods:
+        - Critical Section **Enter**: Check if another `process` is accessing `Critical Section`, and wait if so.
+        - Critical Section **Exit**: Postprocess for exiting `Critical Section` (eg. Mark flag that it exited `Critical Section`)
+    
+    - Requirements to fulfill when implementing `Mutual Exclusion` algorithm:
+        - **`Processes` cannot enter `Critical Section` if in use**.
+        - `Processes` **should be able to enter `Critical Section` if no `process` is using** it.
+        - **`Processes` should wait finite time to enter `Critical Section`**
+
+- **`Race Condition`**
+    - `Race Condition` refers to a system where **multiple tasks would `race` on their own to access a shared resource**. If The **timing or the order of the access decides the system's behavior**, this could be an issue which leads to **unexpected or inconsistent result** of the program.
+
+    -  How to prevent `Race Condition`:
+        - **`Mutex (Mutual Exclusion Object)`**
+            - `Mutex` is an `object` which ensures that **only one `thread` can access a resource at a time** so that data would remain consistent with integrity.
+            - `Mutex` uses **`lock` and `unlock`** methods.
+            - If a resource is locked, the thread has to wait till it is unlocked.
+            - In most of the cases, `Mutex` is **used within a single process**.
+
+        - **`Semaphore`**
+            - **`Semaphore` is an `non-negative integer` which can express the number of `threads` that can access the resource** (will be initialized with maximum number of tasks that can access a certain resource simultaneously).
+            - `Semphore` usually allows simultanoues access between `processes`.
+            - **`wait`**: **If `Semaphore` is bigger than zero, `Semaphore` would be decreased and the operation will continue, otherwise will wait** till it becomes bigger than zero.
+            - **`signal`**: **Increases `Semaphore` value**.
+
+
+- **`DeadLock (교착 상태)`**
+    - `DeadLock` refers to a situation that **tasks cannot proceed forever because they're waiting for another for itself**.
+    - Conditions for triggering `DeadLock` (all conditions needs to be met. If at least one is not fulfilled, `DeadLock` will not happen):
+        - **`Mutual Exclusion`**: Multiple Processes **cannot access a shared resource simultanouesly**.
+        - **`Hold and Wait`**: `Process` is **currently holding at least one resource, and is requesting for another which is being held by another `process`**.
+        - **`No pre-emption (비선점)`**: A `process` **cannot take away resource when another `process` is using it**.
+        - **`Circulat Wait`**: `Processes` **have resources that another `process` requires in a circular way**.
+    
+    - How to handle `DeadLock`:
+        - **`DeadLock Ignorance`**
+            - `OS` **assuming that `Deadlock` will never happen**. (most widely used)
+            - **The handling methods of `DeadLock` sacrifies performance while `DeadLock` does not occur so often**. Therefore `OS` like **`Windows` and `Linux` would just let the user restart the system when `DeadLock` occurs** and focus more on the performance.
+
+        - **`DeadLock Prevention`**
+            - **Prevent `DeadLock` from happening by excluding the condition that `DeadLock`** requires.
+            - `Remove Mutual Exclusion`
+                - Limitation
+                    - While for several resources, it is possible to remove `Mutual Exclusion` (eg. `Spooling` for printers), it is not applicable to all types of resources.
+                    - Removing `Mutual Exclusion` could trigger `Race Conditions`.
+
+            - Remove `Hold and Wait` by assigning all the necessary resources at the beginning:
+                - Limitation
+                    -Practically impossible to define all the necessary resources initially.
+                    - Inefficient cause the process would keep holding a resource that it doesn't actually need, but is required for others.
+
+            - Allow `Preemption`
+                - Limitation
+                    - The result of the resource-stolen task will be inconsistent.
+
+            - **Avoid `Circular Wait` by assigning priority to resources**
+                - Method of **assigning priority number to each resource and a process cannot request resource with lower priority** → This will prevent `Circular Wait`
+                - Unlike other `DeadLock Prevention` methods, this is considered to be a practical approach, but effort needs to be given on how to `prioritize` resources. (if resource prioritizing is done incorrectly, there could still be `DeadLocks`).
+
+        - **`DeadLock Avoidance`**
+            - Proactively **look for potential `DeadLocks` and avoid in advance** before they actually occur.
+            - This **does not ensure that `DeadLock` will never happen, but avoid as much as possible**.
+            - `Banker's Algorithm`
+                - **Process should declare `maximum number of resources` it would request at the beginning**, and the **`system` would determine based on current resource allocation and other informations to see if granting the request would maintain the system in `safe state` (declined task will be postponed)**.
+                - Has flaws that a task must declare all potential resource requests at the beginning, and because of that the allocation of the resource could be ineffective.
+
+        - **`DeadLock Detection & Recovery`**
+            - Let processes fall `DeadLock`, **periodically check if there's `DeadLock` and apply recovery** methods if one is detected. (eg. **`aborting` and `restarting` the process**)
