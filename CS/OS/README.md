@@ -300,3 +300,10 @@
     - **More processes can be maintained on the `main memory` at once (good for `Multi-Tasking`)**
     - **Process can be bigger than the size of `Main Memory`**
     - The memory that a program consumes is split into `main memory` and `secondary memory`, and only required data would go up to the `main memory`. This increases security
+
+
+## 12. DMA (Direct Memory Access)
+- Feature of allowing certain `hardware systems` to access the `main memory` without intervention of `CPU`.
+- Without `DMA`, `CPU` is fully occupied during `I/O` data transfer.
+- With `DMA`, `CPU` would initiate the transfer, do something else, and receives `interrupt` at the end.
+- `DMA` is not only used to handle `I/O` data, but also to move data within `memory`.
