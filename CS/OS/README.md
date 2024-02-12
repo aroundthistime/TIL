@@ -266,7 +266,7 @@
 
         - **Segmentation**
             - **Divide process into `segments` with different sizes which is a logical unit** (eg. `Code`, `Data`, `Stack`, `Heap`)
-            - **`Segmentation Table` should have `limit` to prevent accessing unwanted area** because each `segments` has different size.
+            - **`Segmentation Table` should have `limit` to prevent accessing unwanted area** because each `segments` has different size. (but seems like people just call it `Page Table` for `Segmentation` as well)
             - **`External Fragmentation` can happen because as processes are loaded, it could be difficult to find a place to assign a large block**.
 
         - **Pros** of `Non-Contiguous Memory Allocation`:
@@ -274,3 +274,29 @@
 
         - **Cons** of `Non-Contiguous Memory Allocation`:
             - **Slow memory access due to `memory translation`** process
+
+
+## 11. Virtual Memory
+- `Virtual Memory` is a memory management technique where **secondary memory can be used as if it's part of the `Main Memory`.
+- `Virtual Memory` maps `Non-Contiguous physical memory` to `Contiguous Logical Memory` for each process (translated during `runtime`).
+- `Virtual Memory` is implemented using `Demand Paging` or `Demand Segmentation` (loading the corresponding unit to the main memory on demand).
+
+- **`Swapping`**: **Moving the `process` between the `disk` and the `Main Memory`**.
+    - `Swap In`: Load the `process` into `Main Memory`
+    - `Swap Out`: Move the `process` from the `Main Memory` to the `disk`.
+    - If the address of the `process` was binded during `Compile Time` or `Load Time`, the `process` has to move to consistent location inside `Main Memory`. **If the address of binded during `Execution Time`, the `process` can move to any address**.
+
+- **`TLB (Translation Lookaside Buffer)`**: **Cache buffer containing `<Page number, Frame Number>` for frequently used pages** (`Frame number` will be used with `page offset` to calculate the `physical address`).
+
+- Steps of memory access in `Virtual Memory`:<br>
+(1) **`CPU` looks through `TLB`**.<br><br>
+(2) If the `page` is found in `TLB` (**`TLB hit`**), the `CPU` will use `frame number` to get the `physical address`.<br><br>
+(3) If the `page` is not found in `TLB` (**`TLB miss`**), **the `CPU` would go to the `Page Table`** to look for the `page number`.<br><br>
+(4) **If the `frame` is not on the `main memory` (`Page Fault`), `interrupt` will be thrown and `OS` will take control**.<br><br>
+(5) **`OS` will `swap-in` the `frame`** from the secondary memory (If the `main memory` is full, **`page replacement algorithm`** will be called to make space). **`Page Table` or `TLB` will be updated** accordingly. Once everything is done, **`signal` will be sent to the `CPU`**.<br><br>
+(6) The `CPU` will take control again and proceed with the blocked `process`.<br><br>
+
+- **Advantages of `Virtual Memory`**:
+    - **More processes can be maintained on the `main memory` at once (good for `Multi-Tasking`)**
+    - **Process can be bigger than the size of `Main Memory`**
+    - The memory that a program consumes is split into `main memory` and `secondary memory`, and only required data would go up to the `main memory`. This increases security
