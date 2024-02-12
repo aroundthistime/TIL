@@ -145,6 +145,7 @@
             - `Mutex` uses **`lock` and `unlock`** methods.
             - If a resource is locked, the thread has to wait till it is unlocked.
             - In most of the cases, `Mutex` is **used within a single process**.
+            - `Lock` and `Unlock` method could be improved to enable simultaneous lock for `Reading` but only allow single lock for `Writing`.
 
         - **`Semaphore`**
             - **`Semaphore` is an `non-negative integer` which can express the number of `threads` that can access the resource** (will be initialized with maximum number of tasks that can access a certain resource simultaneously).
@@ -209,3 +210,67 @@
 - **`Priority`**
     - Set priorities to tasks.
     - Could be improved by increasing priority of task which waited in the queue for a long time.
+
+
+## 9. Memory Hierarchy
+- `Register` > `Cache` > `Main Memory (RAM)` > `Electronic Disk` > `Magnetic Disk` > `Optical Disk` > `Magnetic Tapes`
+- The program has to go on `Main Memory` to be executed.
+- The memory starting from `Main Memory` are volatile.
+
+
+
+## 10. Memory Allocation
+- Types of `Addresses`:
+    - **`Physical Address`**: **Physical address inside the `Main Memory`**.
+    - **`Logical Address`**: Address **created by `CPU` per each `process`, which starts from 0. Used inside a `process`**.
+
+- `Address Binding`: Deciding where to allocate the `Physical Memory Address` of a `process`.
+    - `Compile Time`: Decided during compile time.
+    - `Load Time`: Decided when the `process` is loaded on to the memory
+    - `Execution Time`: Decide on `Runtime` (and also could change during `runtime`). The `CPU` uses `address mapping table` when referring to the `address`.
+
+- Allocating memory for a `process`:
+    - **`Contiguous Allocation (연속적 할당)`**
+        - Method of allocating `contiguous memory block` to a `process`.
+        - `Block`: Small pieces of `memory` with fixed-size.
+        - `Hole`: Empty `Block(s)` where a `process` could be assigned.
+        - **`Partition`**: **Memory Block(s) consisting of one `process`** (as long as the system is not following `Multi-Partition Alloction`)
+        - **`Fragmentation (단편화)`**: Ocurrence of small `memory blocks` that cannot be used.
+        - **`Fixed-Partition`** (Static Contiguous Allocation)
+            - The system gets divided into **multiple fixed-sized partitions**.
+            - Number of allocatable `processes` will be decided by the fixed partition size.
+            - **`Internal Fragmentation`**: Leftover blocks when the `partition size` is bigger than what the process actually needs.
+            - **`External Fragmentation`**: **Enough memory is remaining but cannot allocate a `process` because the blocks are not continguous**.
+                - `External Fragmentation` can be resolved by `Compaction (압축)`** which is **gathering all `partitions` into one side without space, but is inefficient due to overhead**.
+
+        - **`Variable-Partition`** (Dynamic Contiguous Allocation)
+            - The **size of each `partition` will be decided by the size of the `process`**.
+            - **Only has `External Fragmentation issue`**
+        
+        - **Pros** of `Contiguous Memory Allocation`:
+            - Easy to implement
+            - **Faster memory access speed**
+        
+        - **Cons** of `Contiguous Memory Allocation`:
+            - **Fragmentation issue** (`Internal Fragmentation`, `External Fragmentation`)
+
+    - **`Non-contiguous Allocation (비연속적 할당)`**
+        - Method of allocating `uncontiguous physical memory block` to a `process`. (all the different parts of the `process` will be allocated to different places in the `memory`)
+        - With `Non-contiguous memory allocation`, the **`OS` needs to maintain a `table` inside the `main memory` per each `process` which consist of the `base address` of each `blocks` the `process` acquired** (This is why `memory execution` is slower with `Non-contiguous allocation` since address translation based on this `table` is required).
+
+        - **`Paging`**
+            - **Divide the `Main memory` and `Process` by same unit (defined by hardware)**.
+            - **`Page`**: **Divided part of `process`** in the secondary memory
+            - **`Frame`**: **Divided part of `Main Memory`**.
+            - **`External Fragmentation` doesn't happen**, but because `frames` have fixed size, **`internal fragmentation` can still happen**.
+
+        - **Segmentation**
+            - **Divide process into `segments` with different sizes which is a logical unit** (eg. `Code`, `Data`, `Stack`, `Heap`)
+            - **`Segmentation Table` should have `limit` to prevent accessing unwanted area** because each `segments` has different size.
+            - **`External Fragmentation` can happen because as processes are loaded, it could be difficult to find a place to assign a large block**.
+
+        - **Pros** of `Non-Contiguous Memory Allocation`:
+            - More **efficient way of memory** usage (**less waste** compared to `Contiguous Memory Allocation`)
+
+        - **Cons** of `Non-Contiguous Memory Allocation`:
+            - **Slow memory access due to `memory translation`** process
