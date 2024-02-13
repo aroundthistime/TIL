@@ -6,7 +6,13 @@
 (3) Using the obtained `ip address` and `port` (default is `80` for `HTTP`, `443` for `HTTPS`), **browser establishes `TCP` connection to the server (`3-way handshake` included).**<br><br>
 (4) Server receives the request, processes it and sends the requested resource (eg. `HTML`)<br><br>
 (5) Browser creates `Render Tree` out of `DOM Tree` and `CSSOM Tree`. Javascript is also fetched and executed to manipulate the tree.<br><br>
-(6) Once all resources are loaded and javascript execution is complete, final layout is rendered and user can interact with the displayed webpage.<br><br>
+(6) If `<script />` tag is found, the script is also fetched. If the script is ready to be executed, the browser gives control from `Rendering engine` to the `Javascript engine`.
+- At the first, **`AST` is created out of the script**.
+- **`Javascript` is an `interpreter` language by default**, **but modern browsers (eg. `Chrome`) would use `JIT (Just-In-Time)` approach (compiling `javascript` into low level language all at once at execution - faster** than `Interpreter`)
+- Additional optimization could be applied depending on the browsers' javascript engine: optimization in the middle, or compiling to `byte code` (mid-level language)
+- The execution of `Javascript` is done synchronously, which would block rendering process. `Javascript engine` would give back control to the `Rendering engine` once the script execution is complete.<br>
+
+(7) Once all resources are loaded and javascript execution is complete, final layout is rendered and user can interact with the displayed webpage.<br><br>
 
 
 ### 2. DNS (Domain Name System) Lookup
