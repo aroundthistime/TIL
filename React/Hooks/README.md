@@ -136,6 +136,33 @@ const Tooltip = () => {
 
 
 
+## 6. useRef
+- `useRef` is a React Hook that lets you reference a value that’s not needed for rendering.
+- `useRef` doesn't trigger rerendering because `ref` is a **plain object with single property of `current`**.
+- If `ref` object is **given to `JSX`, `React` will create a `DOM Node` and set is as `current` of `ref`**.
+- `useRef` is suitable for **storing data which doesn't affect visual output**.
+- For the **initial value of `useRef`, calling an initializer  would be a waste because the function will be called on every render although the value would not be actually used**.
+- `ref` should cannot be passed through components without using `forwardRef`.
+- `useRef` initialized with function could be easily null checked with the following approach:
+```
+const Video = () => {
+  const playerRef = useRef(new VideoPlayer()); // This will waste performance
+  const playerRef = useRef(null);
+
+  // Use this every time you want to access the ref
+  function getPlayer() {
+    if (playerRef.current !== null) {
+      return playerRef.current;
+    }
+    const player = new VideoPlayer();
+    playerRef.current = player;
+    return player;
+  }
+
+  // ...
+}
+```
+
 
 ### 1. useImperativeHandle
 - Hook used to customzie the handle exposed as a `ref`.
