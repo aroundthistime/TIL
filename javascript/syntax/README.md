@@ -107,3 +107,22 @@ function _b() {
 
 b();
 ```
+
+## 3. Import assertions
+- **`Important assertion` is a feature of `Javascript V8 engine`** to **include additional information (eg. resource type) when importing a module**.
+- Background of `Import assertion`:
+  - The normal `import` relies on `MIME type` to distinguish the resource, but this has security issues:
+    - eg. when importing a third-party resource, and their server returns a `script` with `MIME type` as `JSON`, and their script is being executed on the server.
+  - Relying on the `extension` of the imported resource to determine its type also shows a lot of mismatch.
+
+- Additional information given by `import assertion` can define how to handle the resource.
+- How to use
+```
+// Static (regular) ipmort
+import data from 'https://~.json' assert { type: 'json }
+
+// Dynamic import
+const jsonModule = await import('~.json', {
+  assert: { type: 'json' }
+})
+```
